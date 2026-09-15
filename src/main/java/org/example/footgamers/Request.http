@@ -1,8 +1,0 @@
-### Petición GET básica
-GET https://google.com
-Accept: application/json
-
-### Petición POST con datos
-#POST https://ejemplo.com
-#Content-Type: application/json
-x
