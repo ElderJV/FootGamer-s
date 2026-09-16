@@ -21,15 +21,20 @@ public class Torneo {
     private String nombre;
 
     @ManyToOne
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
+    @Column(name = "fecha_inicio")
     private LocalDate fechaInicio;
 
+    @Column(name = "fecha_fin")
     private LocalDate fechaFin;
-    @ManyToOne
+
+    @ManyToOne()
+    @JoinColumn(name = "ganador_id")
     private Jugador ganador;
 
-    @OneToMany()
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "torneo")
     private List<Partido> partidos;
 
     private long cantidadJugadores;

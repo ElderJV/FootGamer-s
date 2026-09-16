@@ -31,13 +31,13 @@ public class Jugador {
     @Column(name = "fecha_registro")
     private LocalDate fechaRegistro;
 
-    @OneToMany()
+    @OneToMany(cascade = CascadeType.ALL,mappedBy ="jugador")
     private List<ParticipacionPartido> participaciones;
 
-    @ManyToMany
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "jugador")
     private List<Trofeo> trofeos;
 
-    @OneToMany
+    @OneToMany(cascade =CascadeType.ALL, mappedBy ="ganador")
     private List<Torneo> torneos;
 
 

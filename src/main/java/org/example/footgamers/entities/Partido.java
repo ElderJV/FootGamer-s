@@ -22,20 +22,24 @@ public class Partido {
 
     private String resultado;
 
-
-    private String ganador;
+    @OneToOne
+    @JoinColumn(name = "bando_id")
+    private Bando ganador;
 
     @ManyToOne()
+    @JoinColumn(name = "torneo_id")
     private Torneo torneo;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_partido")
     private TipoPartido tipoPartido;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "estado_confirmacion")
     private EstadoConfirmacion estadoConfirmacion;
 
     private LocalDate fecha;
 
-    @OneToMany
+    @OneToMany(mappedBy = "partido",cascade = CascadeType.ALL)
     private List<ParticipacionPartido> participacionPartidos;
 }

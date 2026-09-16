@@ -18,11 +18,15 @@ public class Trofeo {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany
-    private List<Jugador> ganadores;
+    private String nombre;
 
-    @OneToMany
-    private List<Torneo> torneos;
+    @ManyToOne()
+    @JoinColumn(name = "jugador_id")
+    private Jugador jugador;
+
+    @OneToOne
+    @JoinColumn(name = "torneo_id")
+    private Torneo torneo;
 
     private LocalDate fecha;
 

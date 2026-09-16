@@ -16,10 +16,10 @@ import java.util.List;
 public class Bando {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
-
+    @Column(name = "numero_lado")
     private int numeroLado;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "bando")
     @Column(name = "jugador_partido")
     private List<ParticipacionPartido> participacionPartidos;
 

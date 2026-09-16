@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.example.footgamers.entities.enums.EstadoConfirmacion;
 
-@Entity
+@Entity(name = "participacion_partido")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,7 +16,7 @@ public class ParticipacionPartido {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne()
     private Partido partido;
 
     private String equipo;
@@ -25,9 +25,11 @@ public class ParticipacionPartido {
     @Column(name = "estado_confirmacion")
     private EstadoConfirmacion estadoConfirmacion;
 
-    @ManyToOne
+    @ManyToOne()
+    @JoinColumn(name = "bando_id")
     private Bando bando;
 
     @ManyToOne()
+    @JoinColumn(name = "jugador_id")
     private Jugador jugador;
 }
