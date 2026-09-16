@@ -1,3 +1,10 @@
 spring:
   application:
     name: FootGamers
+  datasource:
+    username: postgres
+    password: imanolleon
+    url: jdbc:postgresql://localhost:5432/foot_gamers
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
