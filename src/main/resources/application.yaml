@@ -1,9 +1,11 @@
 spring:
+  config:
+    import: optional:file:.env[.properties]
   application:
     name: FootGamers
   datasource:
-    username: postgres
-    password: imanolleon
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     url: jdbc:postgresql://localhost:5432/foot_gamers
   jpa:
     hibernate:
