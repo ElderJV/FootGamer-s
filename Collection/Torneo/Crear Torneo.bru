@@ -1,0 +1,21 @@
+meta {
+  name: Crear Torneo
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/api/torneos
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "nombre": "Torneo de verano",
+    "categoriaId": 1,
+    "fechaInicio": "2026-07-01",
+    "fechaFin": "2026-07-31",
+    "cantidadJugadores": 16
+  }
+}

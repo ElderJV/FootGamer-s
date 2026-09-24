@@ -1,0 +1,10 @@
+meta {
+  name: Obtener Categorias
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:8080/api/categorias?pagina=0&tamano=10
+  auth: inherit
+}

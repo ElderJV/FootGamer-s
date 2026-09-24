@@ -19,11 +19,9 @@ public class Jugador {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String username;
-
-    private String email;
-
-    private String contrasena;
+    @OneToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
     @Column(name = "equipo_favorito")
     private String equipoFavorito;

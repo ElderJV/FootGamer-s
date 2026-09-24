@@ -1,0 +1,20 @@
+meta {
+  name: Actualizar Usuario
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:8080/api/usuarios/1
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "username": "usuario1",
+    "email": "nuevo@example.com",
+    "contrasena": "nueva123",
+    "rol": "ADMINISTRADOR"
+  }
+}

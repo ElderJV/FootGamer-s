@@ -4,9 +4,9 @@ spring:
   application:
     name: FootGamers
   datasource:
-    username: ${DB_USERNAME}
+    username: ${DB_USER}
     password: ${DB_PASSWORD}
-    url: jdbc:postgresql://localhost:5432/foot_gamers
+    url: ${DB_URL}
   jpa:
     hibernate:
       ddl-auto: create-drop

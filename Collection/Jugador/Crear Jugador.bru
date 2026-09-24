@@ -1,0 +1,18 @@
+meta {
+  name: Crear Jugador
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/api/jugadores
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "usuarioId": 1,
+    "equipoFavorito": "Real Madrid"
+  }
+}
