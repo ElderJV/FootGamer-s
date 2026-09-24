@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.footgamers.dto.request.PartidoRequestDto;
 import org.example.footgamers.dto.response.PartidoResponseDto;
 import org.example.footgamers.entities.Bando;
-import org.example.footgamers.entities.EstadoConfirmacion;
+import org.example.footgamers.entities.enums.EstadoConfirmacion;
 import org.example.footgamers.entities.ParticipacionPartido;
 import org.example.footgamers.entities.Partido;
 import org.example.footgamers.entities.Torneo;
