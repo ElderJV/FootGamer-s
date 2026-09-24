@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.example.footgamers.entities.enums.EstadoConfirmacion;
+import org.example.footgamers.entities.enums.EstadoPartido;
+import org.example.footgamers.entities.enums.FaseTorneo;
 import org.example.footgamers.entities.enums.TipoPartido;
 
 import java.time.LocalDate;
@@ -42,4 +44,22 @@ public class Partido {
 
     @OneToMany(mappedBy = "partido",cascade = CascadeType.ALL)
     private List<ParticipacionPartido> participacionPartidos;
+
+    @Enumerated(EnumType.STRING)
+    private FaseTorneo fase;
+
+    @ManyToOne
+    @JoinColumn(name = "grupo_id")
+    private Grupo grupo;
+
+    @Enumerated(EnumType.STRING)
+    private EstadoPartido estado;
+
+    @ManyToOne
+    @JoinColumn(name = "partido_fuente_uno_id")
+    private Partido fuenteUno;
+
+    @ManyToOne
+    @JoinColumn(name = "partido_fuente_dos_id")
+    private Partido fuenteDos;
 }

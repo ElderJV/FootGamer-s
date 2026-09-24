@@ -8,16 +8,18 @@ import org.example.footgamers.service.reglas.IBando;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/bando")
+@RequestMapping("/bandos")
 @RequiredArgsConstructor
 public class BandoController {
 
     private final IBando bandoService;
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
     public ResponseEntity<BandoResponseDto> crear(@Valid @RequestBody BandoRequestDto request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(bandoService.crear(request));
     }
@@ -35,12 +37,14 @@ public class BandoController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
     public ResponseEntity<BandoResponseDto> actualizar(@PathVariable Long id,
                                                        @Valid @RequestBody BandoRequestDto request) {
         return ResponseEntity.ok(bandoService.actualizar(id, request));
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         bandoService.eliminar(id);
         return ResponseEntity.noContent().build();

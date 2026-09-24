@@ -18,6 +18,7 @@ import org.example.footgamers.service.reglas.IParticipacionPartido;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,6 +30,7 @@ public class ParticipacionPartidoService implements IParticipacionPartido {
     private final BandoRepository bandoRepository;
 
     @Override
+    @Transactional
     public ParticipacionPartidoResponseDto crear(ParticipacionPartidoRequestDto request) {
         ParticipacionPartido participacion = new ParticipacionPartido();
         participacion.setPartido(buscarPartido(request.partidoId()));
@@ -40,17 +42,20 @@ public class ParticipacionPartidoService implements IParticipacionPartido {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<ParticipacionPartidoResponseDto> obtenerTodos(Long pagina, Long tamano) {
         return participacionPartidoRepository.findAll(PageRequest.of(pagina.intValue(), tamano.intValue()))
                 .map(this::toResponse);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public ParticipacionPartidoResponseDto obtenerPorId(Long id) {
         return toResponse(buscarParticipacion(id));
     }
 
     @Override
+    @Transactional
     public ParticipacionPartidoResponseDto actualizar(Long id, ParticipacionPartidoRequestDto request) {
         ParticipacionPartido participacion = buscarParticipacion(id);
         participacion.setBando(buscarBando(request.bandoId()));
@@ -59,6 +64,7 @@ public class ParticipacionPartidoService implements IParticipacionPartido {
     }
 
     @Override
+    @Transactional
     public ParticipacionPartidoResponseDto confirmar(Long id) {
         ParticipacionPartido participacion = buscarParticipacion(id);
         participacion.setEstadoConfirmacion(EstadoConfirmacion.CONFIRMADO);
@@ -66,6 +72,7 @@ public class ParticipacionPartidoService implements IParticipacionPartido {
     }
 
     @Override
+    @Transactional
     public void eliminar(Long id) {
         participacionPartidoRepository.delete(buscarParticipacion(id));
     }

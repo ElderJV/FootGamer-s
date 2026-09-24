@@ -32,4 +32,8 @@ public class ParticipacionPartido {
     @ManyToOne()
     @JoinColumn(name = "jugador_id")
     private Jugador jugador;
+
+    @ManyToOne()
+    @JoinColumn(name = "bando_ganador_votado_id")
+    private Bando bandoGanadorVotado;
 }

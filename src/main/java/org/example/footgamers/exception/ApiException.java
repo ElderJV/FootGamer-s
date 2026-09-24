@@ -24,4 +24,8 @@ public class ApiException extends RuntimeException {
     public static ApiException solicitudInvalida(String mensaje) {
         return new ApiException(mensaje, HttpStatus.BAD_REQUEST);
     }
+
+    public static ApiException noAutorizado(String mensaje) {
+        return new ApiException(mensaje, HttpStatus.UNAUTHORIZED);
+    }
 }

@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.footgamers.entities.enums.EstadoTorneo;
+import org.example.footgamers.entities.enums.FaseTorneo;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,7 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Torneo {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nombre;
@@ -38,5 +41,26 @@ public class Torneo {
     private List<Partido> partidos;
 
     private long cantidadJugadores;
+    @ManyToOne
+    @JoinColumn(name = "id_trofeo")
+    private Trofeo trofeo;
+
+    private long cantidadGrupos;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "fase_actual")
+    private FaseTorneo faseActual;
+
+    @Enumerated(EnumType.STRING)
+    private EstadoTorneo estado;
+
+    @OneToMany(mappedBy = "torneo", cascade = CascadeType.ALL)
+    private List<Grupo> grupos;
+
+    @ManyToMany
+    @JoinTable(name = "torneo_jugador",
+            joinColumns = @JoinColumn(name = "torneo_id"),
+            inverseJoinColumns = @JoinColumn(name = "jugador_id"))
+    private List<Jugador> participantes;
 
 }

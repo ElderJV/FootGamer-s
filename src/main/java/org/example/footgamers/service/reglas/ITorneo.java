@@ -16,5 +16,7 @@ public interface ITorneo {
 
     TorneoResponseDto asignarGanador(Long id, Long jugadorId);
 
+    TorneoResponseDto inscribirJugador(Long id, Long jugadorId);
+
     void eliminar(Long id);
 }

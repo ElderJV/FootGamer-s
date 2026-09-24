@@ -10,48 +10,56 @@ import org.example.footgamers.repository.UsuarioRepository;
 import org.example.footgamers.service.reglas.IUsuario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
 public class UsuarioService implements IUsuario {
 
     private final UsuarioRepository usuarioRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
+    @Transactional
     public UsuarioResponseDto crear(UsuarioRequestDto request) {
         validarUsuarioUnico(null, request);
         Usuario usuario = new Usuario();
         usuario.setUsername(request.username());
         usuario.setEmail(request.email());
-        usuario.setContrasena(request.contrasena());
+        usuario.setContrasena(passwordEncoder.encode(request.contrasena()));
         usuario.setRol(request.rol());
         return toResponse(usuarioRepository.save(usuario));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<UsuarioResponseDto> obtenerTodos(Long pagina, Long tamano) {
         return usuarioRepository.findAll(PageRequest.of(pagina.intValue(), tamano.intValue()))
                 .map(this::toResponse);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public UsuarioResponseDto obtenerPorId(Long id) {
         return toResponse(buscarUsuario(id));
     }
 
     @Override
+    @Transactional
     public UsuarioResponseDto actualizar(Long id, UsuarioRequestDto request) {
         Usuario usuario = buscarUsuario(id);
         validarUsuarioUnico(usuario, request);
         usuario.setUsername(request.username());
         usuario.setEmail(request.email());
-        usuario.setContrasena(request.contrasena());
+        usuario.setContrasena(passwordEncoder.encode(request.contrasena()));
         usuario.setRol(request.rol());
         return toResponse(usuarioRepository.save(usuario));
     }
 
     @Override
+    @Transactional
     public void eliminar(Long id) {
         Usuario usuario = buscarUsuario(id);
         usuarioRepository.delete(usuario);

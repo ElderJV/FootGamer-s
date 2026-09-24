@@ -1,0 +1,22 @@
+info:
+  name: crear grupos
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: http://localhost:8080/torneos/1/grupos
+  body:
+    type: json
+    data: |-
+      {
+        "tipoAsignacion": "ALEATORIO"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

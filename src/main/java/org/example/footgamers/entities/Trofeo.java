@@ -24,9 +24,9 @@ public class Trofeo {
     @JoinColumn(name = "jugador_id")
     private Jugador jugador;
 
-    @OneToOne
-    @JoinColumn(name = "torneo_id")
-    private Torneo torneo;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "trofeo")
+    private List<Torneo> torneos;
 
     private LocalDate fecha;
 

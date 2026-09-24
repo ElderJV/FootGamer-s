@@ -1,0 +1,28 @@
+info:
+  name: actualizar
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: http://localhost:8080/torneos/1
+  body:
+    type: json
+    data: |-
+      {
+        "nombre": "Torneo de invierno",
+        "categoriaId": 1,
+        "fechaInicio": "2026-12-01",
+        "fechaFin": "2026-12-31",
+        "cantidadJugadores": 8,
+        "trofeoId": 1,
+        "cantidadGrupos": 2
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

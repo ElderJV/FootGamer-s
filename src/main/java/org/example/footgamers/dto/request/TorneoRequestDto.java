@@ -19,6 +19,12 @@ public record TorneoRequestDto(
         LocalDate fechaFin,
 
         @NotNull(message = "La cantidad de jugadores es obligatoria")
-        Long cantidadJugadores
+        Long cantidadJugadores,
+
+        @NotNull(message = "El trofeo es obligatorio")
+        Long trofeoId,
+
+        @NotNull(message = "La cantidad de grupos es obligatoria")
+        Long cantidadGrupos
 ) {
 }

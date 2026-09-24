@@ -10,3 +10,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
+
+jwt:
+  secret: ${JWT_SECRET:clave-desarrollo-para-firmar-jwt-footgamers-2026}
+  expiration-ms: ${JWT_EXPIRATION_MS:86400000}

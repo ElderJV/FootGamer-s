@@ -20,7 +20,6 @@ public class Bando {
     private int numeroLado;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "bando")
-    @Column(name = "jugador_partido")
     private List<ParticipacionPartido> participacionPartidos;
 
 }

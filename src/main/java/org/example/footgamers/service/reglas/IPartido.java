@@ -4,11 +4,17 @@ import org.example.footgamers.dto.request.PartidoRequestDto;
 import org.example.footgamers.dto.response.PartidoResponseDto;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
+
 public interface IPartido {
 
     PartidoResponseDto crear(PartidoRequestDto request);
 
     Page<PartidoResponseDto> obtenerTodos(Long pagina, Long tamano);
+
+    List<PartidoResponseDto> listarPorTorneo(Long torneoId);
+
+    List<PartidoResponseDto> listarPorGrupo(Long grupoId);
 
     PartidoResponseDto obtenerPorId(Long id);
 
