@@ -17,4 +17,8 @@ public class MensajeException {
     public static final String RESULTADO_INVALIDO = "El resultado %s no es válido, use el formato goles-goles";
     public static final String CANTIDAD_GRUPOS_INVALIDA = "El torneo debe tener como mínimo un grupo";
     public static final String JUGADORES_INSUFICIENTES = "Se necesitan al menos %s jugadores para %s grupos";
+    public static final String TAMANO_PAGINA_INVALIDO = "El tamano de pagina debe estar entre 1 y %s";
+    public static final String PAGINA_INVALIDA = "La pagina debe estar entre 0 y %s";
+    public static final String TROFEO_CON_TORNEOS =
+            "El trofeo con id %s tiene %s torneo(s) asociados y no puede eliminarse";
 }

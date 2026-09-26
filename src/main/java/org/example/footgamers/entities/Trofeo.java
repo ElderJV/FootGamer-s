@@ -25,7 +25,7 @@ public class Trofeo {
     private Jugador jugador;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "trofeo")
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "trofeo")
     private List<Torneo> torneos;
 
     private LocalDate fecha;

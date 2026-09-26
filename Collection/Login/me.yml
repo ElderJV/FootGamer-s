@@ -6,7 +6,9 @@ info:
 http:
   method: GET
   url: http://localhost:8080/auth/me
-  auth: inherit
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJpbWFub2wiLCJyb2wiOiJBRE1JTklTVFJBRE9SIiwiaWF0IjoxNzkwMzgxOTk3LCJleHAiOjE3OTA0NjgzOTd9.5vdZpJ09UvsgUuQavcr2-SJrA-fgw_qhyJcqWyMccuBKJa5oehCSUYMXyA9CXIHL
 
 settings:
   encodeUrl: true

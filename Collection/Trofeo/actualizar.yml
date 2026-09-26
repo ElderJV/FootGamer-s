@@ -1,17 +1,18 @@
 info:
-  name: crear
+  name: actualizar
   type: http
-  seq: 2
+  seq: 4
 
 http:
-  method: POST
-  url: http://localhost:8080/jugadores
+  method: PUT
+  url: http://localhost:8080/trofeos/1
   body:
     type: json
     data: |-
       {
-        "usuarioId": 2,
-        "equipoFavorito": "Barcelona"
+        "nombre": "Copa de la Liga 2026",
+        "fecha": "2026-12-20",
+        "jugadorId": null
       }
   auth: inherit
 

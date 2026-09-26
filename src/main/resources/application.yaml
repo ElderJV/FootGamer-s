@@ -9,8 +9,8 @@ spring:
     url: ${DB_URL}
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
 
 jwt:
-  secret: ${JWT_SECRET:clave-desarrollo-para-firmar-jwt-footgamers-2026}
-  expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  secret: ${JWT_SECRET}
+  expiration-ms: ${JWT_EXPIRATION_MS}
